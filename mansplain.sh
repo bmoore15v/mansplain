@@ -5,7 +5,7 @@
 
 ### OPTIONS AND VARIABLES ###
 
-while getopts ":b:p:h" o; do case "${o}" in
+while getopts ":p:h" o; do case "${o}" in
 	h) printf "Select programs needed:\\n  -p: Dependencies and programs csv (local file or url)\\n  -h: Show this message\\n" && exit 1 ;;
 	p) progsfile=${OPTARG} ;;
 	*) printf "Invalid option: -%s\\n" "$OPTARG" && exit 1 ;;
