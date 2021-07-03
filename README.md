@@ -70,7 +70,7 @@ chmod +x mansplain
 If you gave your file a different name you will need to insert it after the x.
 
 ```
-chmod +x *filenamehere*
+chmod +x _filenamehere_
 ```
 
 ## Run your script
