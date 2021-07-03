@@ -70,7 +70,7 @@ chmod +x mansplain
 If you gave your file a different name you will need to insert it after the x.
 
 ```
-chmod +x _filenamehere_
+chmod +x <file_name_here>
 ```
 
 ## Run your script
@@ -83,7 +83,7 @@ Once you’ve done all that you will be able to run your script by typing in
 If you did not name your folder and file the same, you will run it by this structure:
 
 ```
-~/<*folder_name*>/./*filename*
+~/<folder_name>/./<file_name>
 ```
 # Saving Your PDF
 
