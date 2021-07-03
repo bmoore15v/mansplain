@@ -34,28 +34,10 @@ maininstall() { # Installs all needed programs from main repo.
 	installpkg "$1"
 	}
 
-gitmakeinstall() {
-	progname="$(basename "$1" .git)"
-	dir="$repodir/$progname"
-	dialog --title "MANSPLAIN Installation" --infobox "Installing \`$progname\` ($n of $total) via \`git\` and \`make\`. $(basename "$1") $2" 5 70
-	sudo -u "$name" git clone --depth 1 "$1" "$dir" >/dev/null 2>&1 || { cd "$dir" || return 1 ; sudo -u "$name" git pull --force origin master;}
-	cd "$dir" || exit 1
-	make >/dev/null 2>&1
-	make install >/dev/null 2>&1
-	cd /tmp || return 1 ;}
-
 installationloop() { \
 	([ -f "$progsfile" ] && cp "$progsfile" /tmp/progs.csv) || curl -Ls "$progsfile" | sed '/^#/d' > /tmp/progs.csv
 	total=$(wc -l < /tmp/progs.csv)
-	aurinstalled=$(pacman -Qqm)
-	while IFS=, read -r tag program comment; do
-		n=$((n+1))
-		echo "$comment" | grep -q "^\".*\"$" && comment="$(echo "$comment" | sed "s/\(^\"\|\"$\)//g")"
-		case "$tag" in
-			"G") gitmakeinstall "$program" "$comment" ;;
-			*) maininstall "$program" "$comment" ;;
-		esac
-	done < /tmp/progs.csv ;}
+	done < /tmp/progs.csv ;} && mkdir -p /home/Documents/Linux\ Manuals/
 
 finalize(){ \
 	dialog --infobox "Preparing welcome message..." 4 50
