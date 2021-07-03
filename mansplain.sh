@@ -7,13 +7,11 @@
 
 while getopts ":b:p:h" o; do case "${o}" in
 	h) printf "Select programs needed:\\n  -p: Dependencies and programs csv (local file or url)\\n  -h: Show this message\\n" && exit 1 ;;
-	b) repobranch=${OPTARG} ;;
 	p) progsfile=${OPTARG} ;;
 	*) printf "Invalid option: -%s\\n" "$OPTARG" && exit 1 ;;
 esac done
 
 [ -z "$progsfile" ] && progsfile="https://raw.githubusercontent.com/bmoore15v/mansplain/master/progs.csv"
-[ -z "$repobranch" ] && repobranch="master"
 
 ### FUNCTIONS ###
 
@@ -58,16 +56,6 @@ installationloop() { \
 			*) maininstall "$program" "$comment" ;;
 		esac
 	done < /tmp/progs.csv ;}
-
-putgitrepo() { # Downloads a gitrepo $1 and places the files in $2 only overwriting conflicts
-	dialog --infobox "Downloading and installing config files..." 4 60
-	[ -z "$3" ] && branch="master" || branch="$repobranch"
-	dir=$(mktemp -d)
-	[ ! -d "$2" ] && mkdir -p "$2"
-	chown "$name":wheel "$dir" "$2"
-	sudo -u "$name" git clone --recursive -b "$branch" --depth 1 --recurse-submodules "$1" "$dir" >/dev/null 2>&1
-	sudo -u "$name" cp -rfT "$dir" "$2"
-	}
 
 finalize(){ \
 	dialog --infobox "Preparing welcome message..." 4 50
