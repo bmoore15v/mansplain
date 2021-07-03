@@ -83,7 +83,7 @@ Once you’ve done all that you will be able to run your script by typing in
 If you did not name your folder and file the same, you will run it by this structure:
 
 ```
-~/<*folder_name*>/./<*file_name*>
+~/<*folder_name*>/./*file_name*
 ```
 # Saving Your PDF
 
