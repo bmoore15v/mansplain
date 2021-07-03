@@ -2,4 +2,4 @@
 ,man-db,lets you read man pages of programs.
 ,zathura,is a pdf viewer with vim-like bindings.
 ,zathura-pdf-mupdf,allows mupdf pdf compatibility in zathura.
-G,https://github.com/lukesmithxyz/dmenu.git,runs commands and provides a UI for selection.
+,dmenu,runs commands and provides a UI for selection.
