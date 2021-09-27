@@ -29,7 +29,7 @@ yay -S zathura
 ```
 
 ```
-yay -S zathura-pdf-mudf
+yay -S zathura-pdf-mupdf
 ```
 
 ## Enable mandb
